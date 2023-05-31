@@ -72,13 +72,11 @@ void loop() {
   bool contact = CheckWireContact();
   int grams = CheckWeight();
 
-
-  Serial.print("Contact: ");
-  Serial.println(contact);
-
-  Serial.print("Tension Grams:");
-  Serial.println(grams);
-
+  Serial.print(contact);
+  Serial.print(";"); 
+  Serial.print(grams);
+  Serial.print("\r"); 
+  Serial.print("\n"); 
 }
 
 int CheckWeight()
@@ -110,7 +108,7 @@ bool CheckWireContact()
     else
       SetContactLed(255);
 
-    return digitalRead(contact);
+    return contact;
 }
 
 void SetContactLed(byte green)
