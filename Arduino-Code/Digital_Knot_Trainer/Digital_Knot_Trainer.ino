@@ -26,8 +26,11 @@
   //The "ideal" tension weight in grams on the trainer, should be a low weight (No tension)
   const int minWeight = 20;
 
-  //The maximum tension weight on the trainer, should be around 350-450g
-  const int maxWeight = -350;
+  //The falloff tension weight on the trainer, should start around 300-400g
+  const int fallOffWeight = -400;
+
+  //The maximum tension weight on the trainer, should be around 500g
+  const int maxWeight = -500;
 
 
 
@@ -89,8 +92,8 @@ int CheckWeight()
   if(grams < maxWeight)
     grams = maxWeight;
 
-  int redStrength = map(grams, minWeight, maxWeight, 0, 255);
-  int greenStrength = map(grams, minWeight, maxWeight, 255, 0);
+  int redStrength = map(grams, fallOffWeight, maxWeight, 0, 255);
+  int greenStrength = map(grams, fallOffWeight, maxWeight, 255, 0);
 
   SetWeightLed(redStrength, greenStrength);  
 
