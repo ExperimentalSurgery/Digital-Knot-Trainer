@@ -92,8 +92,14 @@ int CheckWeight()
   if(grams < maxWeight)
     grams = maxWeight;
 
-  int redStrength = map(grams, fallOffWeight, maxWeight, 0, 255);
-  int greenStrength = map(grams, fallOffWeight, maxWeight, 255, 0);
+  int redStrength = 0;
+  int greenStrength = 255;
+
+  if(grams<=fallOffWeight)
+  {
+    redStrength = map(grams, fallOffWeight, maxWeight, 0, 255);
+    greenStrength = map(grams, fallOffWeight, maxWeight, 255, 0);
+  }
 
   SetWeightLed(redStrength, greenStrength);  
 
